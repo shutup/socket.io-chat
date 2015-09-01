@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/head_imageView"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="3dp"
+        android:src="@drawable/user_head_me" />
+
+    <RelativeLayout
+        android:id="@+id/repley_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@id/head_imageView">
+
+        <TextView
+            android:id="@+id/reply_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/user_msg_box"
+            android:gravity="center_vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="25dp"
+            android:paddingTop="8dp"
+            android:textColor="@color/chat_cell_msg_me"
+            android:textSize="@dimen/chat_cell_msg" />
+
+        <ImageView
+            android:id="@+id/msg_error_imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@id/reply_textView"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="14dp"
+            android:src="@drawable/msg_error_pic"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/msg_senting_progressBar"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignBottom="@id/reply_textView"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="3dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ViewStub
+        android:id="@+id/time_view_stub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/repley_layout"
+        android:layout_centerHorizontal="true"
+
+        android:layout="@layout/viewstub_msg_time" />
+
+</RelativeLayout>

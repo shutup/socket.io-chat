@@ -1,0 +1,9 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="left_chat_cell_userIcon_margin">10dp</dimen>
+    <dimen name="left_chat_cell_userName_margin">10dp</dimen>
+    <dimen name="left_chat_cell_userMsg_margin">5dp</dimen>
+    <dimen name="chat_cell_msg">18sp</dimen>
+</resources>

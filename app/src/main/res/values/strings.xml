@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">GlobalRandomChat</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="inputMsgHint">请输入:</string>
+    <string name="sendMsg">发送</string>
+    <string name="connectingStatusStr">正在连接</string>
+    <string name="connectedStatusStr">已连接</string>
+    <string name="disconnectStatusStr">连接断开</string>
+    <string name="title_activity_login">123</string>
+    <string name="loginNameStr">昵称</string>
+    <string name="loginRoomStr">房间号</string>
+    <string name="loginBtnStr">加入</string>
+</resources>
