@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity implements Constants {
             @Override
             public void onClick(View v) {
                 if (checkInput()) {
-                    Intent intent = new Intent(LoginActivity.this, ChatActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, NewChatActivity.class);
                     intent.putExtra(loginNickName, nickNameEdit.getText().toString());
                     intent.putExtra(loginRoomName, roomNameEdit.getText().toString());
                     startActivity(intent);

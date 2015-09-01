@@ -374,7 +374,7 @@ public class MessageInputToolBox extends RelativeLayout {
             }
 
             @Override
-            public void destroyItem(View arg0, int arg1, Object arg2) {
+            public void destroyItem(ViewGroup arg0, int arg1, Object arg2) {
                 System.out.println(arg0 + "  " + arg1 + "  " + arg2);
                 ((ViewPager) arg0).removeView(functionGridViewList.get(arg1));
             }
@@ -383,7 +383,7 @@ public class MessageInputToolBox extends RelativeLayout {
              * 获取每一个item?类于listview中的getview
              */
             @Override
-            public Object instantiateItem(View arg0, int arg1) {
+            public Object instantiateItem(ViewGroup arg0, int arg1) {
                 ((ViewPager) arg0).addView(functionGridViewList.get(arg1));
                 return functionGridViewList.get(arg1);
             }

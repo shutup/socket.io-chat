@@ -1,47 +1,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
-    <include layout="@layout/action_bar"></include>
-
-    <TextView
-        android:id="@+id/info"
+    <ListView
+        android:id="@+id/messageListview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/conversation_bg"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="3dp"
+        android:scrollbarStyle="outsideOverlay" />
 
-    <ScrollView
+    <View
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="1dp"
+        android:background="#7fd8d8d8" />
 
-        <TextView
-            android:id="@+id/contents"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </ScrollView>
-
-    <LinearLayout
+    <com.shutup.chatWidget.MessageInputToolBox
+        android:id="@+id/messageInputToolBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/inputMsg"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:hint="@string/inputMsgHint" />
-
-        <Button
-            android:id="@+id/sendMsgBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/sendMsg" />
-    </LinearLayout>
-
+        android:layout_height="wrap_content" />
 </LinearLayout>
