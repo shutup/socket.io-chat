@@ -1,4 +1,4 @@
-package com.shutup.globalrandomchat;
+package com.shutup.globalchat;
 
 /**
  * Created by shutup on 15-8-28.

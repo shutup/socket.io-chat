@@ -1,7 +1,6 @@
-package com.shutup.globalrandomchat;
+package com.shutup.globalchat;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +19,7 @@ import android.widget.Toast;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
+import com.shutup.globalrandomchat.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -322,7 +322,7 @@ public class ChatActivity extends AppCompatActivity implements Constants {
         mSocket.off();
     }
 
-    
+
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK &&

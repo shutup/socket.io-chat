@@ -1,4 +1,4 @@
-package com.shutup.globalrandomchat;
+package com.shutup.globalchat;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.shutup.globalrandomchat.R;
 
 import java.util.ArrayList;
 

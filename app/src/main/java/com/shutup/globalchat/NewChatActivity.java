@@ -1,4 +1,4 @@
-package com.shutup.globalrandomchat;
+package com.shutup.globalchat;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import com.shutup.chatWidget.MessageAdapter;
 import com.shutup.chatWidget.MessageInputToolBox;
 import com.shutup.chatWidget.OnOperationListener;
 import com.shutup.chatWidget.Option;
+import com.shutup.globalrandomchat.R;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,12 +1,11 @@
 package com.shutup.chatWidget;
 
-import com.shutup.globalrandomchat.Utils;
+import com.shutup.globalchat.Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
-import java.util.logging.SimpleFormatter;
 
 public class Message {
     public final static int MSG_TYPE_TEXT = 0;

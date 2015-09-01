@@ -1,4 +1,4 @@
-package com.shutup.globalrandomchat;
+package com.shutup.globalchat;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;

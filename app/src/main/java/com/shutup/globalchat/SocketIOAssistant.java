@@ -1,4 +1,4 @@
-package com.shutup.globalrandomchat;
+package com.shutup.globalchat;
 
 import android.app.Activity;
 import android.content.Context;

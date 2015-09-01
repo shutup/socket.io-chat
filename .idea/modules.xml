@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GlobalRandomChat.iml" filepath="$PROJECT_DIR$/GlobalRandomChat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GlobalChat.iml" filepath="$PROJECT_DIR$/GlobalChat.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
