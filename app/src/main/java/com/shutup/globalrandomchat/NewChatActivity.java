@@ -27,14 +27,22 @@ public class NewChatActivity extends AppCompatActivity implements Constants {
     private ListView listView;
     private MessageAdapter adapter;
 
+    private SocketIOAssistant socketIOAssistant;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initMessageInputToolBox();
         initListView();
+        initSocketIO();
+        initMessageInputToolBox();
 
+
+    }
+
+    private void initSocketIO() {
+        Bundle data = getIntent().getExtras();
+        socketIOAssistant = SocketIOAssistant.getSocketIOAssistant(NewChatActivity.this, new UserInfo(data.getString(loginNickName), data.getString(loginRoomName)), adapter);
     }
 
 
@@ -48,17 +56,13 @@ public class NewChatActivity extends AppCompatActivity implements Constants {
 
             @Override
             public void send(String content) {
-
                 System.out.println("===============" + content);
+                Message message = new Message(Message.MSG_TYPE_TEXT, Message.MSG_STATE_SUCCESS, "Tom", "avatar", "Jerry", "avatar", content, true, true, new Date());
+                //add to local
+                addMessage(message);
+                //send to server
+                socketIOAssistant.attemptSend(message);
 
-                Message message = new Message(0, 1, "Tom", "avatar", "Jerry", "avatar", content, true, true, new Date());
-
-
-                adapter.getData().add(message);
-                listView.setSelection(listView.getBottom());
-
-                //Just demo
-                createReplayMsg(message);
             }
 
             @Override
@@ -66,11 +70,11 @@ public class NewChatActivity extends AppCompatActivity implements Constants {
 
                 System.out.println("===============" + content);
                 Message message = new Message(Message.MSG_TYPE_FACE, Message.MSG_STATE_SUCCESS, "Tomcat", "avatar", "Jerry", "avatar", content, true, true, new Date());
-                adapter.getData().add(message);
-                listView.setSelection(listView.getBottom());
+                //add to local
+                addMessage(message);
+                //send to server
+                socketIOAssistant.attemptSend(message);
 
-                //Just demo
-                createReplayMsg(message);
             }
 
 
@@ -133,25 +137,7 @@ public class NewChatActivity extends AppCompatActivity implements Constants {
     private void initListView() {
         listView = (ListView) findViewById(R.id.messageListview);
 
-        //create Data
-        Message message = new Message(Message.MSG_TYPE_TEXT, Message.MSG_STATE_SUCCESS, "Tom", "avatar", "Jerry", "avatar", "Hi", false, true, new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24) * 8));
-        Message message1 = new Message(Message.MSG_TYPE_TEXT, Message.MSG_STATE_SUCCESS, "Tom", "avatar", "Jerry", "avatar", "Hello World", true, true, new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24) * 8));
-        Message message2 = new Message(Message.MSG_TYPE_PHOTO, Message.MSG_STATE_SUCCESS, "Tom", "avatar", "Jerry", "avatar", "device_2014_08_21_215311", false, true, new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24) * 7));
-        Message message3 = new Message(Message.MSG_TYPE_TEXT, Message.MSG_STATE_SUCCESS, "Tom", "avatar", "Jerry", "avatar", "Haha", true, true, new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24) * 7));
-        Message message4 = new Message(Message.MSG_TYPE_FACE, Message.MSG_STATE_SUCCESS, "Tom", "avatar", "Jerry", "avatar", "big3", false, true, new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24) * 7));
-        Message message5 = new Message(Message.MSG_TYPE_FACE, Message.MSG_STATE_SUCCESS, "Tom", "avatar", "Jerry", "avatar", "big2", true, true, new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24) * 6));
-        Message message6 = new Message(Message.MSG_TYPE_TEXT, Message.MSG_STATE_FAIL, "Tom", "avatar", "Jerry", "avatar", "test send fail", true, false, new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24) * 6));
-        Message message7 = new Message(Message.MSG_TYPE_TEXT, Message.MSG_STATE_SENDING, "Tom", "avatar", "Jerry", "avatar", "test sending", true, true, new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24) * 6));
-
         List<Message> messages = new ArrayList<Message>();
-        messages.add(message);
-        messages.add(message1);
-        messages.add(message2);
-        messages.add(message3);
-        messages.add(message4);
-        messages.add(message5);
-        messages.add(message6);
-        messages.add(message7);
 
         adapter = new MessageAdapter(this, messages);
         listView.setAdapter(adapter);
@@ -167,6 +153,10 @@ public class NewChatActivity extends AppCompatActivity implements Constants {
 
     }
 
+    private void addMessage(Message msg) {
+        adapter.getData().add(msg);
+        listView.setSelection(listView.getBottom());
+    }
 
     private void createReplayMsg(Message message) {
 

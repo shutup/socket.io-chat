@@ -8,6 +8,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -21,6 +22,24 @@ public class Utils {
         return simpleDateFormat.format(date);
     }
 
+    public static String getTime(Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        return simpleDateFormat.format(date);
+    }
+
+    public static Date getDate(String time) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (date != null) {
+            return date;
+        }
+        return new Date();
+    }
     public Bitmap toRoundBitmap(Bitmap bitmap) {
         //圆形图片宽高
         int width = bitmap.getWidth();

@@ -11,7 +11,7 @@ public interface Constants {
     public static String loginNickName = "loginNickName";
     public static String loginRoomName = "loginRoomName";
 
-    public static String receiveMessage = "new message";
+    public static String receiveGlobalMessage = "global message";
     public static String joinGroup = "join group";
     public static String leaveGroup = "leave group";
     public static String addUser = "add user";

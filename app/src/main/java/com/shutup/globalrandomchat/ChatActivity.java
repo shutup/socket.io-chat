@@ -1,9 +1,13 @@
 package com.shutup.globalrandomchat;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -316,6 +320,42 @@ public class ChatActivity extends AppCompatActivity implements Constants {
             mSocket.disconnect();
         }
         mSocket.off();
+    }
+
+    
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK &&
+                event.getAction() == KeyEvent.ACTION_DOWN
+                && event.getRepeatCount() == 0) {
+            System.out.println("按下了back键 onKeyDown()");
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            System.out.println("按下了back键 onKeyDown()");
+            AlertDialog.Builder builder = new AlertDialog.Builder(ChatActivity.this);
+            builder.setIcon(R.drawable.msg_error_pic);
+            builder.setTitle("你确定要离开吗？");
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    //这里添加点击确定后的逻辑
+                    finish();
+                }
+            });
+            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    //这里添加点击确定后的逻辑
+
+                }
+            });
+            builder.create().show();
+        }
+        return false;
     }
 
     @Override

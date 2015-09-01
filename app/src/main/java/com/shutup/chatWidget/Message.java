@@ -1,6 +1,12 @@
 package com.shutup.chatWidget;
 
+import com.shutup.globalrandomchat.Utils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Date;
+import java.util.logging.SimpleFormatter;
 
 public class Message {
     public final static int MSG_TYPE_TEXT = 0;
@@ -10,6 +16,17 @@ public class Message {
     public final static int MSG_STATE_SENDING = 0;
     public final static int MSG_STATE_SUCCESS = 1;
     public final static int MSG_STATE_FAIL = 2;
+
+    public static String JSON_KEY_TYPE = "type";
+    public static String JSON_KEY_STATE = "state";
+    public static String JSON_KEY_MSG = "msg";
+    public static String JSON_KEY_TIME = "time";
+    public static String JSON_KEY_IsSend = "isSend";
+    public static String JSON_KEY_SendSuccess = "sendSuccess";
+    public static String JSON_KEY_FromUserName = "fromUserName";
+    public static String JSON_KEY_FromUserAvatar = "fromUserAvatar";
+    public static String JSON_KEY_ToUserName = "toUserName";
+    public static String JSON_KEY_ToUserAvatat = "toUserAvatar";
 
     private Long id;
     private Integer type;        // 0-text | 1-photo | 2-face | more type ... TODO://
@@ -38,6 +55,41 @@ public class Message {
         this.isSend = isSend;
         this.sendSucces = sendSucces;
         this.time = time;
+    }
+
+    public Message(Message message) {
+        super();
+        this.type = message.getType();
+        this.state = message.getState();
+        this.fromUserName = message.getFromUserName();
+        this.fromUserAvatar = message.getFromUserName();
+        this.toUserName = message.getToUserName();
+        this.toUserAvatar = message.getToUserName();
+        this.content = message.getContent();
+        this.isSend = message.getIsSend();
+        this.sendSucces = message.getSendSucces();
+        this.time = message.getTime();
+    }
+
+    public static Message fromJSON(JSONObject jsonObject) {
+        Message msg = null;
+        try {
+            msg = new Message(
+                    jsonObject.getInt(Message.JSON_KEY_TYPE),
+                    jsonObject.getInt(Message.JSON_KEY_STATE),
+                    jsonObject.getString(Message.JSON_KEY_FromUserName),
+                    jsonObject.getString(Message.JSON_KEY_FromUserAvatar),
+                    jsonObject.getString(Message.JSON_KEY_ToUserName),
+                    jsonObject.getString(Message.JSON_KEY_ToUserAvatat),
+                    jsonObject.getString(Message.JSON_KEY_MSG),
+                    jsonObject.getBoolean(Message.JSON_KEY_IsSend),
+                    jsonObject.getBoolean(Message.JSON_KEY_SendSuccess),
+                    Utils.getDate(jsonObject.getString(Message.JSON_KEY_TIME))
+            );
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return msg;
     }
 
     public Long getId() {
@@ -128,4 +180,22 @@ public class Message {
         this.time = time;
     }
 
+    public JSONObject toJSON() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put(Message.JSON_KEY_MSG, getContent());
+            json.put(Message.JSON_KEY_STATE, getState());
+            json.put(Message.JSON_KEY_TYPE, getType());
+            json.put(Message.JSON_KEY_TIME, Utils.getTime(getTime()));
+            json.put(Message.JSON_KEY_IsSend, getIsSend());
+            json.put(Message.JSON_KEY_FromUserName, getFromUserName());
+            json.put(Message.JSON_KEY_FromUserAvatar, getFromUserAvatar());
+            json.put(Message.JSON_KEY_ToUserName, getToUserName());
+            json.put(Message.JSON_KEY_ToUserAvatat, getToUserAvatar());
+            json.put(Message.JSON_KEY_SendSuccess, getSendSucces());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
 }
