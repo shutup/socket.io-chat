@@ -1,6 +1,6 @@
 # socket.io-chat
 a app that can exchange data through socket.io.
-
+![screen capture](https://raw.githubusercontent.com/shutup/socket.io-chat/master/device-2015-09-01-162324.png)
 ##What is this?
 this is an android app that can chat with somebody through socket.io . 
 And i am not good at js,so the server is as simple as possiable.
