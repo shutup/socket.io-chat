@@ -15,8 +15,8 @@ And i am not good at js,so the server is as simple as possiable.
   * the default server is 
     in my vps.and the server is not always online.So the perfect way is to
     setup your own server.the demo server code is also provided.
-    
+  * [demo server](https://github.com/shutup/socket.io-chat-server)
     
 ##THANKS
-* [socket.io-android-chat] https://github.com/nkzawa/socket.io-android-chat
-* [Android-Chat-Widget]https://github.com/ijarobot/Android-Chat-Widget
+* [socket.io-android-chat] (https://github.com/nkzawa/socket.io-android-chat)
+* [Android-Chat-Widget](https://github.com/ijarobot/Android-Chat-Widget)
